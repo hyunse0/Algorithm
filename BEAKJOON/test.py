@@ -1,3 +1,6 @@
-arr = [1, 2, 3]
+quest = [2, 3]
+temp = 0
 
-print(sum([]))
+for i in range(2):
+    temp = temp*10 + int(quest[i])
+    print(temp)
