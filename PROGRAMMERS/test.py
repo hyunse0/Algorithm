@@ -31,8 +31,6 @@ for test_case in range(t):
     for key,val in alphabet_cnt.items():
         if(val <k):
             alphabet_candidate.remove(key)
-    
-    print(alphabet_candidate)
 
     #print(alphabet_candidate)
     # for i in alphabet_candidate:

@@ -1,3 +1,5 @@
-arr = [[1, 2, 3], 4, 5]
+from collections import deque
 
-print(min(arr))
+queue = deque((1, 2), (2, 3))
+
+print(queue)
