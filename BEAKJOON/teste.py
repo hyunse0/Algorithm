@@ -1,5 +1,8 @@
-from collections import deque
+arr = [[1, 2, 3], [1, 1, 6], [1, 1, 1]]
 
-queue = deque((1, 2), (2, 3))
 
-print(queue)
+def cnt(a, b):
+    return a.count(b)
+
+print(list(map(cnt(1), arr, 1)))
+# print(sum(map(cnt, arr)))
