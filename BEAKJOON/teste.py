@@ -1,8 +1,18 @@
-arr = [[1, 2, 3], [1, 1, 6], [1, 1, 1]]
+number = 111566
 
+def is_danjo(number):
+    temp = []
 
-def cnt(a, b):
-    return a.count(b)
+    while number >= 10:
+        temp.append(number%10)
+        number //= 10
+    
+    temp.append(number)
 
-print(list(map(cnt(1), arr, 1)))
-# print(sum(map(cnt, arr)))
+    for i in range(len(temp)-1):
+        if temp[i] < temp[i+1]:
+            return False
+    
+    return True
+
+print(is_danjo(number))
