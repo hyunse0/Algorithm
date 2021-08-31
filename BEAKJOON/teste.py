@@ -1,18 +1,15 @@
-number = 111566
-
-def is_danjo(number):
-    temp = []
-
-    while number >= 10:
-        temp.append(number%10)
-        number //= 10
-    
-    temp.append(number)
-
-    for i in range(len(temp)-1):
-        if temp[i] < temp[i+1]:
-            return False
-    
-    return True
-
-print(is_danjo(number))
+for tc in range(int(input())):
+    ans = []
+    n = int(input())
+    nums = list(map(int, input().split()))
+    nums.sort()
+    for i in range(n-1):
+        for j in range(i+1, n):
+            temp = nums[i] * nums[j]
+            temp_str = str(temp)
+            for k in range(len(temp_str) - 1):
+                if temp_str[k] > temp_str[k+1]:
+                    break
+            else:
+                ans.append(temp)
+    print('#{} {}'.format(tc+1, max(ans)))
