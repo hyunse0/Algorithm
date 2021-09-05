@@ -1,15 +1,21 @@
-for tc in range(int(input())):
-    ans = []
-    n = int(input())
-    nums = list(map(int, input().split()))
-    nums.sort()
-    for i in range(n-1):
-        for j in range(i+1, n):
-            temp = nums[i] * nums[j]
-            temp_str = str(temp)
-            for k in range(len(temp_str) - 1):
-                if temp_str[k] > temp_str[k+1]:
-                    break
-            else:
-                ans.append(temp)
-    print('#{} {}'.format(tc+1, max(ans)))
+fish = [(0, 2), (0, 1), (3, 1), (2, 1)]
+
+fish.sort(key=lambda x: (x[0], x[1]))
+
+print(fish[0])
+
+
+# 거리가 1인 애들을 구해보자
+# distance1 = deque()
+# for dx, dy in dxy:
+#     nx, ny = x+dx, y+dy
+#     distance1.append((nx, ny))
+
+# 거리가 2인 애들을 구해보자
+# distance2 = deque()
+# while distance1:
+#     x, y = distance1.popleft()
+#     for dx, dy in dxy:
+#         nx, ny = x+nx, y+ny
+#         distance2.append((nx, ny))
+
