@@ -39,7 +39,7 @@ def eat_fish(x, y):
         # 같은 거리에 있는 물고기 중 먹을 수 있는 사이즈라면
         fish = []
         for i, j in same_distance:
-            if arr[i][j] < size:
+            if arr[i][j] and arr[i][j] < size:
                 fish.append((i, j))
         
         # 만약 먹을 수 있는 물고기가 존재한다면

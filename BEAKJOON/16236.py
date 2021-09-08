@@ -21,6 +21,7 @@ def eat_fish(x, y):
     # 거리가 같으면, 위/왼쪽이 우선 : 위/왼쪽/오른쪽/아래
     dxy = [(-1, 0), (0, -1), (0, 1), (1, 0)]
 
+    fish = []
     while queue:
         curr_x, curr_y = queue.popleft()
 
@@ -35,10 +36,16 @@ def eat_fish(x, y):
 
                     # 0이 아니고, 상어 크기보다 작다면 잡아먹을 수 있음
                     if arr[nx][ny] and arr[nx][ny] < size:
-                        arr[nx][ny] = 0          # 잡아먹었으니까 물고기가 없는 것! 0으로 바꾸기
-                        eat += 1                 # 잡아먹은 물고기 수 체크
-                        time += visited[nx][ny]  # 지금까지 움직인 거리(=시간) 더해주기
-                        return nx, ny
+                        fish.append((nx, ny, visited[nx][ny]))
+            
+    if fish:
+        fish.sort(key=lambda x: (x[2], x[0], x[1]))
+        fish_x, fish_y, distance = fish[0]
+
+        arr[fish_x][fish_y] = 0       # 잡아먹었으니까 물고기가 없는 것! 0으로 바꾸기
+        eat += 1                      # 잡아먹은 물고기 수 체크
+        time += distance              # 지금까지 움직인 거리(=시간) 더해주기
+        return fish_x, fish_y
     
     return 99, 99
 
