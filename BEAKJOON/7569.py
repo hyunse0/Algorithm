@@ -31,7 +31,7 @@ def bfs(k, i, j):
 M, N, H = map(int, input().split())
 box = [[list(map(int, input().split())) for _ in range(N)] for _ in range(H)]
 
-print(box)
-cnt = 0
-bfs(0, 0, 0)
-print(box)
+# print(box)
+# cnt = 0
+# bfs(0, 0, 0)
+# print(box)
