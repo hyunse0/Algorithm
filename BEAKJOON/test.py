@@ -1,39 +1,14 @@
-def KMP(pattern, text):
-    M = len(pattern)
-    N = len(text)
-
-    # 문자열 매칭 실패 시 돌아갈 곳을 저장
-    fail = [0]*M
-    i = 0
-    j = 1
-    while j < M:
-        # 첫 번째는 -1 저장
-        fail[0] = -1
-
-        # 만약 똑같은 문자가 있다면, 앞 쪽 문자의 인덱스 저장
-        if pattern[i] == pattern[j]:
-            fail[j] = i
-            i += 1
-            j += 1
-        # 아니라면 한 칸 옮기기
-        else:
-            j += 1
-    
-    print(fail)
-
-    # 문자열 매칭
-    i = j = 0
-    while True:
-        if text[i] == pattern[j]:
-            i += 1
-            j += 1
-        else:
-            j = j - fail[j]
-
-
-
-
-pattern = 'ABCDABD'
-# [-1, 0, 0, 0, 0, 1, 2]
-text = 'ABCABCDABABCDABCDABDE'
-KMP(pattern, text)
+n = int(input())
+s = [0 for i in range(301)]
+dp = [0 for i in range(301)]
+for i in range(n):
+    s[i] = int(input())
+print(s)
+print(dp)
+dp[0] = s[0]
+dp[1] = s[0] + s[1]
+dp[2] = max(s[1] + s[2], s[0] + s[2])
+for i in range(3, n):
+    dp[i] = max(dp[i - 3] + s[i - 1] + s[i], dp[i - 2] + s[i])
+print(dp)
+print(dp[n - 1])

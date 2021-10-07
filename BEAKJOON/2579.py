@@ -1,24 +1,32 @@
 # 백준 2579 계단 오르기
 
 N = int(input())
+score = [0] + [int(input()) for _ in range(N)]
 
-score = [0]
-for _ in range(N):
-    score.append(int(input()))
+# [현재까지 최고 점수, 한 칸 이동한 횟수]
+max_score = [[0, 0] for _ in range(N+1)]
+# 0번째 칸은 실제로 밟는 것이 아니므로 횟수를 -1로 초기화
+max_score[0][1] = -1
 
-# 두 칸 이동하는 경우 인덱스 에러가 나지 않도록 뒤에 2개의 인덱스를 더 생성
-# 인덱스의 숫자를 맞추기 위하여 앞에 1개의 인덱스를 더 생성
-arr = [0 for _ in range(N+3)]
+for i in range(N+1):
+    if i+1 <= N and max_score[i][1] != 1:
+        # 원래 점수
+        before1 = max_score[i+1][0]
+        # 한 칸 이동
+        after1 = max_score[i][0]+score[i+1]
 
-for i in range(N, -1, -1):
-    # 마지막 칸은 무조건 밟아야 함
-    if i == N:
-        arr[i] = score[i]
-    
-    # 한 칸 이동하는 경우 : 그 전 이동은 무조건 2칸 이동이여야 함
-    arr[i-1] = max(arr[i-1], arr[i+2] + score[i] + score[i-1])
+        if before1 < after1:
+            max_score[i+1][0] = after1
+            max_score[i+1][1] = max_score[i][1] + 1
 
-    # 두 칸 이동하는 경우 : 그 전 이동이 어떤 경우이든 상관없음! 무조건 최대값에 점수 더해주기
-    arr[i-2] = max(arr[i-2], arr[i] + score[i-2])
+    if i+2 <= N:
+        # 원래 점수
+        before2 = max_score[i+2][0]
+        # 두 칸 이동
+        after2 = max_score[i][0]+score[i+2]
 
-print(arr[1])
+        if before2 < after2:
+            max_score[i+2][0] = after2
+            max_score[i+2][1] = 0
+
+print(max_score[N][0])
