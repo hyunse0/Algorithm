@@ -1,4 +1,7 @@
 # 백준 4948 베르트랑 공준
+import sys
+input = sys.stdin.readline
+
 
 def is_prime_number(number):
     if number == 2:
