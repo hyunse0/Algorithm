@@ -10,14 +10,18 @@ idx = defaultdict(list)
 max_len = 0
 start = 0
 for i in range(N):
-    cnt[numbers[i]] += 1
-    
-    if cnt[numbers[i]]:
-        idx[numbers[i]].append(i)
+    cnt[numbers[i]] += 1    
+    idx[numbers[i]].append(i)
 
     if cnt[numbers[i]] > K:
         max_len = max(max_len, i-start)
-        start = idx[numbers[i]].pop(0) + 1
-        cnt[numbers[i]] -= 1
+
+        temp = idx[numbers[i]].pop(0) + 1
+        for j in range(start, temp):
+            cnt[numbers[j]] -= 1
+
+        start = temp
+
+max_len = max(max_len, N-start)
 
 print(max_len)
