@@ -1,10 +1,14 @@
-from collections import defaultdict, deque
+temp = [1, 2, 3]
+a = temp
+b = temp
+c = temp
+d = temp
 
-idx = defaultdict(list)
+c[0] = 4
+c[1] = 5
+c[2] = 6
 
-idx['A'].append('a')
-idx['A'].append('b')
-idx['A'].append('c')
-idx['A'].append('d')
-
-print(idx)
+print(a)
+print(b)
+print(c)
+print(d)

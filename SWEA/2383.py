@@ -59,14 +59,10 @@ for t in range(1, T+1):
                 stairs.append((i, j))
     
     total = float('inf')
-    # for n in range(N):
-    #     for people1 in combinations(people, n):
-    #         people2 = list(set(people) - set(people1))
-    #         time = max(go_for_lunch(people1, stairs[0]), go_for_lunch(people2, stairs[1]))
-    #         total = min(total, time)
-
-    people1 = [(0,3), (1,2), (2,3), (0,2)]
-    people2 = [(3,1), (4,0)]
-    total = max(go_for_lunch(people1, stairs[0]), go_for_lunch(people2, stairs[1]))
+    for n in range(N):
+        for people1 in combinations(people, n):
+            people2 = list(set(people) - set(people1))
+            time = max(go_for_lunch(people1, stairs[0]), go_for_lunch(people2, stairs[1]))
+            total = min(total, time)
     
     print('#{} {}'.format(t, total))
