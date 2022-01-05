@@ -3,6 +3,9 @@
 from collections import defaultdict
 
 def solution(gems):
+    if len(set(gems)) == 1:
+        return [1, 1]
+    
     locations = defaultdict(list)
     for i in range(len(gems)):
         locations[gems[i]].append(i)
@@ -14,5 +17,3 @@ def solution(gems):
         end.append(min(location))
         
     return [min(start)+1, max(end)+1]
-
-print(solution(["DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"]))
