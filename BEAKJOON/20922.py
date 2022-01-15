@@ -4,23 +4,32 @@ from collections import defaultdict
 N, K = map(int, input().split())
 numbers = list(map(int, input().split()))
 
-cnt = defaultdict(int)
 idx = defaultdict(list)
 
 max_len = 0
 start = 0
-for i in range(N):
-    cnt[numbers[i]] += 1    
-    idx[numbers[i]].append(i)
+end = 0
 
-    if cnt[numbers[i]] > K:
-        max_len = max(max_len, i-start)
+while True:
+    # end 인덱스 1씩 증가
+    while len(idx[numbers[end]]) < K:
+        idx[numbers[end]].append(end)
+        end += 1
+        if end == N:
+            break
+    
+    # 최장 길이 갱신
+    max_len = max(max_len, end-start)
+    if end == N:
+        break
 
-        temp = idx[numbers[i]].pop(0) + 1
-        for j in range(start, temp):
-            cnt[numbers[j]] -= 1
+    # start 변경
+    temp = idx[numbers[end]][0] + 1
 
-        start = temp
+    for i in range(start, temp):
+        idx[numbers[i]].pop(0)
+    
+    start = temp
 
 max_len = max(max_len, N-start)
 
