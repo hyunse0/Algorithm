@@ -1,9 +1,6 @@
 # 프로그래머스 징검다리 건너기
 
-def solution(stones, k):
-    if len(stones) == 1:
-        return stones[0]
-    
+def solution(stones, k):  
     min_people = min(stones)
     max_people = max(stones)
     
@@ -23,11 +20,11 @@ def solution(stones, k):
         
         if cnt >= k:
             max_people = mid - 1
-        else:
             answer = mid
+        else:
             min_people = mid + 1
     
-    return answer + 1
+    return answer
 
 stones = [2, 4, 5, 3, 2, 1, 4, 2, 5, 1]
 print(solution(stones, 1))
