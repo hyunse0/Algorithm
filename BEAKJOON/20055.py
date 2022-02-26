@@ -29,10 +29,13 @@ while powers.count(0) < K:
 
                 if robot != N - 2:
                     temp.append(robot + 1)
+            else:
+                if robot != N - 1:
+                    temp.append(robot)
         robots = temp
     
     # 3
-    if powers[0] > 0 and 0 not in robots:
+    if powers[0] > 0:
         powers[0] -= 1
         robots.append(0)
 
