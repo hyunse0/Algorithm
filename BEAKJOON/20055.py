@@ -12,27 +12,24 @@ while powers.count(0) < K:
     # 1
     powers.appendleft(powers.pop())
 
-    if robots:
-        temp = []
-        for robot in robots:
-            if robot != N - 2:
-                temp.append(robot + 1)
-        robots = temp
+    temp = []
+    for robot in robots:
+        if robot != N - 2:
+            temp.append(robot + 1)
+    robots = temp
     
     
     # 2
-    if robots:
-        temp = []
-        for robot in robots:
-            if robot+1 not in robots and powers[robot+1] > 0:
-                powers[robot+1] -= 1
+    temp = []
+    for robot in robots:
+        if robot+1 not in temp and powers[robot+1] > 0:
+            powers[robot+1] -= 1
 
-                if robot != N - 2:
-                    temp.append(robot + 1)
-            else:
-                if robot != N - 1:
-                    temp.append(robot)
-        robots = temp
+            if robot != N - 2:
+                temp.append(robot + 1)
+        else:
+            temp.append(robot)
+    robots = temp
     
     # 3
     if powers[0] > 0:
