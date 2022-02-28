@@ -64,7 +64,7 @@ def game(cnt, red, blue):
 
         # 빨간 공은 구멍으로 빠져나가고 파란 공은 빠져나가지 않은 경우
         if mr == (0, 0) and mb != (0, 0):
-            answer = cnt
+            answer = min(answer, cnt)
 
             # 되돌리기
             board[red[0]][red[1]] = 'R'
@@ -115,4 +115,3 @@ if answer == 11:
     print(-1)
 else:
     print(answer)
-
