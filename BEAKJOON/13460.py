@@ -25,7 +25,7 @@ def restore(red, mr, blue, mb):
     if mr != (0, 0) and red != mr:
         board[mr[0]][mr[1]] = '.'
     board[blue[0]][blue[1]] = 'B'
-    if mb != (0, 0) and blue != mb:
+    if mb != (0, 0) and blue != mb and board[mb[0]][mb[1]] != 'R':
         board[mb[0]][mb[1]] = '.'
 
 
