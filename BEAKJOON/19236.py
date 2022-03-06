@@ -1,25 +1,26 @@
 # 백준 19236 청소년 상어
 
 def move_fish(num, way):
-    global space, numbers
+    new_space = [[0 for _ in range(4)] for _ in range(4)]
+    new_numbers = {}
 
     x, y = numbers[num]
 
     while True:
         nx, ny = x+dxy[way][0], y+dxy[way][1]
         if 0 <= nx < 4 and 0 <= ny < 4 and not visited[nx][ny]:
-            space[x][y] = (num, way)
-            space[x][y], space[nx][ny] = space[nx][ny], space[x][y]
-            numbers[space[x][y][0]] = (x, y)
-            numbers[space[nx][ny][0]] = (nx, ny)
-            return
+            new_space[nx][ny] = (num, way)
+            new_space[x][y] = space[nx][ny]
+            new_numbers[space[x][y][0]] = (x, y)
+            new_numbers[space[nx][ny][0]] = (nx, ny)
+            return new_space, new_numbers
         else:
             if way == 7: way -= 8
             way += 1
 
 
-def move_shark(eat):
-    global space, numbers, shark, way, visited, answer
+def move_shark(eat, space, numbers):
+    global shark, way, visited, answer
 
     # 상어가 물고기를 잡아먹음
     eat += space[shark[0]][shark[1]][0]
@@ -29,7 +30,7 @@ def move_shark(eat):
 
     # 물고기 이동
     for num, i, j in numbers.items():
-        move_fish(num, space[i][j][1])
+        new_space, new_numbers = move_fish(num, space[i][j][1])
     
     # 상어 이동
     while True:
@@ -38,8 +39,9 @@ def move_shark(eat):
 
         if 0 <= nx < 4 and 0 <= ny < 4 and space[nx][ny][0]:
             shark = (nx, ny)
-            move_shark(eat)
+            move_shark(eat, new_space, new_numbers)
             shark = (x, y)
+            
         else:
             answer = max(answer, eat)
             return
