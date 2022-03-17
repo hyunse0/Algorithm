@@ -26,11 +26,12 @@ def move_shark(eat, space, numbers):
     eat += space[shark[0]][shark[1]][0]
     way = space[shark[0]][shark[1]][1]
     numbers.pop(space[shark[0]][shark[1]][0])
+    space[shark[0]][shark[1]] = 0
     visited[shark[0]][shark[1]] = 1
 
     # 물고기 이동
-    for num, i, j in numbers.items():
-        new_space, new_numbers = move_fish(num, space[i][j][1])
+    for num, fish in numbers.items():
+        new_space, new_numbers = move_fish(num, space[fish[0]][fish[1]][1])
     
     # 상어 이동
     while True:
@@ -59,6 +60,7 @@ for i in range(4):
     
     space.append(row)
 
+# ↑, ↖, ←, ↙, ↓, ↘, →, ↗
 dxy = [(-1, 0), (-1, -1), (0, -1), (1, -1), (1, 0), (1, 1), (0, 1), (-1, 1)]
 visited = [[0 for _ in range(4)] for _ in range(4)]
 
@@ -66,5 +68,5 @@ shark = (0, 0)
 way = (-1, -1)
 
 answer = 0
-move_shark(0)
+move_shark(0, space, numbers)
 print(answer)
