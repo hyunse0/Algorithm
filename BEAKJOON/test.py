@@ -1,14 +1,6 @@
-temp = [1, 2, 3]
-a = temp
-b = temp
-c = temp
-d = temp
+from math import ceil
 
-c[0] = 4
-c[1] = 5
-c[2] = 6
+A, B, V = map(int, input().split())
 
-print(a)
-print(b)
-print(c)
-print(d)
+# 하루에 올라갈 수 있는 높이 : A-B
+print(ceil((V-A)/(A-B))+1)
