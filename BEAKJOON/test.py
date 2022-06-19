@@ -1,6 +1,13 @@
-from math import ceil
+T = int(input())
 
-A, B, V = map(int, input().split())
+for _ in range(T):
+    k = int(input())
+    n = int(input())
 
-# 하루에 올라갈 수 있는 높이 : A-B
-print(ceil((V-A)/(A-B))+1)
+    apart = [x for x in range(1, n+1)]
+
+    for _ in range(k):
+        for i in range(1, n):
+            apart[i] += apart[i-1]
+    
+    print(apart[-1])
