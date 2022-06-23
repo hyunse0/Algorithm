@@ -39,7 +39,7 @@ def solution(play_time, adv_time, logs):
     
     max_cnt = 0
     max_time = 0
-    for t in range(play_time-adv_time):
+    for t in range(play_time-adv_time+1):
         if t:
             cnt = all_time[t+adv_time-1] - all_time[t-1]
         else:
