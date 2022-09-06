@@ -1,13 +1,12 @@
-T = int(input())
+l = 48
+r = 122
 
-for _ in range(T):
-    k = int(input())
-    n = int(input())
+l1 = 57
+r1 = 65
 
-    apart = [x for x in range(1, n+1)]
+l2 = 90
+r2 = 97
 
-    for _ in range(k):
-        for i in range(1, n):
-            apart[i] += apart[i-1]
-    
-    print(apart[-1])
+result = r - l +1 - (r1 - l1 +1) - (r2 - l2 +1)
+
+print(result)
