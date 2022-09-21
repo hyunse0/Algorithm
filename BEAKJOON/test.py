@@ -1,12 +1,8 @@
-l = 48
-r = 122
+arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+arr_sum = [[0 for _ in range(4)] for _ in range(4)]
 
-l1 = 57
-r1 = 65
+for i in range(1, 4):
+    for j in range(1, 4):
+        arr_sum[i][j] = arr[i-1][j-1] + arr_sum[i-1][j] + arr_sum[i][j-1] - arr_sum[i-1][j-1]
 
-l2 = 90
-r2 = 97
-
-result = r - l +1 - (r1 - l1 +1) - (r2 - l2 +1)
-
-print(result)
+print(arr_sum)
