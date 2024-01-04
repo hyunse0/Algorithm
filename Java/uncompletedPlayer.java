@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-class Solution {
+class UncompletedPlayer {
     // 효율성 빵점~
     public String solution(String[] participant, String[] completion) {
         List<String> participantList = new ArrayList<>(Arrays.asList(participant));

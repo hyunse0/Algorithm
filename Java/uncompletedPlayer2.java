@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-class Solution {
+class UncompletedPlayer2 {
     public String solution(String[] participant, String[] completion) {
       String answer = "";
       HashMap<String, Integer> people = new HashMap<>();
