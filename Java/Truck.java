@@ -25,7 +25,10 @@ public class Truck {
             }
         }
 
-        if (queueSum > 0) {answer += bridge_length;}
+        if (queueSum > 0) {
+            answer += bridge_length;
+        }
 
         return answer;
+    }
 }
